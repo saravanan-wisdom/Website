@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saravanan Wisdom</title>
+    
+    <link rel="icon" type="image/png" href="https://saravananwisdom.in/favicon.png">
+    
+    <meta http-equiv="refresh" content="10;url=https://saravananwisdom.in" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #ff6b3d;
+            --dark: #0f172a;
+        }
+
+        body, html {
+            margin: 0; padding: 0; height: 100%; width: 100%;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .bg-gradient {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            filter: blur(80px);
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            animation: drift 20s infinite alternate ease-in-out;
+        }
+
+        .c1 { width: 400px; height: 400px; background: rgba(255, 107, 61, 0.15); top: -10%; left: 10%; }
+        .c2 { width: 300px; height: 300px; background: rgba(15, 23, 42, 0.05); bottom: 10%; right: 10%; animation-delay: -5s; }
+
+        @keyframes drift {
+            from { transform: translate(0, 0); }
+            to { transform: translate(100px, 50px); }
+        }
+
+        .glass-container {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 40px;
+            padding: 60px 30px; 
+            text-align: center;
+            max-width: 450px;
+            width: 90%; 
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.08);
+            box-sizing: border-box;
+        }
+
+        .icon-box {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 24px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 800;
+            box-shadow: 0 20px 40px rgba(255, 107, 61, 0.2);
+            animation: pulse-icon 2.5s infinite ease-in-out;
+        }
+
+        @keyframes pulse-icon {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        p {
+            color: #64748b;
+            line-height: 1.6;
+            font-size: 1.0rem;   
+            font-weight: 400;
+            margin-top: 30px;    
+            margin-bottom: 70px; 
+        }
+
+        .timer-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .progress-circle {
+            width: 4px;
+            height: 40px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-inner {
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            transform-origin: bottom;
+            /* 2. Updated CSS Animation duration to 10s */
+            animation: fillDown 10s linear forwards; 
+        }
+
+        @keyframes fillDown {
+            from { transform: scaleY(1); }
+            to { transform: scaleY(0); }
+        }
+
+        .timer-text {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #sec-count { color: var(--primary); }
+
+        @media (max-height: 600px) {
+            p {
+                margin-top: 20px;
+                margin-bottom: 40px;
+            }
+            .glass-container {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-gradient">
+        <div class="circle c1"></div>
+        <div class="circle c2"></div>
+    </div>
+
+    <div class="glass-container">
+        <div class="icon-box">!</div>
+        
+        <p>The page you're looking for has moved or no longer exists.</p>
+        
+        <div class="timer-wrap">
+            <div class="progress-circle">
+                <div class="progress-inner"></div>
+            </div>
+            <div class="timer-text">Returning in <span id="sec-count">10</span>s</div>
+        </div>
+    </div>
+
+    <script>
+        // 3. Updated JavaScript timer to 10s
+        let timeLeft = 10;
+        const display = document.getElementById('sec-count');
+        
+        const countdown = setInterval(() => {
+            timeLeft--;
+            if (timeLeft >= 0) {
+                display.innerText = timeLeft;
+            } else {
+                clearInterval(countdown);
+                window.location.href = "https://saravananwisdom.in"; 
+            }
+        }, 1000);
+    </script>
+
+</body>
+                </html>
+    
